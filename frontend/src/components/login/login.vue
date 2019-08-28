@@ -33,17 +33,18 @@ export default {
              data, msg, status
            } = res.data
            if (status === 200) {
+              // 登录成功
+              // 保存token值 目的：如果用户没登录不让进入页面，登录成功后保存token
+             localStorage.setItem('token', data.token)
+              // 跳转home
              this.$route.push({name:'home'})
              // 提示成功
              this.$message.success(msg)
            }else {
+             // 不成功
+             // 提示信息
              this.$message.warning(msg)
            }
-           // 登录成功
-           // 跳转home
-
-           // 不成功
-           // 提示信息
          })
        }
     }
