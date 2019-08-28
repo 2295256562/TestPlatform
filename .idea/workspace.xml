@@ -114,7 +114,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="826" />
     <option name="y" value="71" />
     <option name="width" value="1082" />
@@ -210,7 +210,7 @@
       <updated>1566913582840</updated>
       <workItem from="1566913584138" duration="4179000" />
       <workItem from="1566953589117" duration="2443000" />
-      <workItem from="1566996491475" duration="6876000" />
+      <workItem from="1566996491475" duration="7497000" />
     </task>
     <task id="LOCAL-00001" summary="提交登录">
       <created>1566953751985</created>
@@ -230,11 +230,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13498000" />
+    <option name="totallyTimeSpent" value="14119000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="826" y="71" width="1082" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24755381" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -250,7 +249,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3253012" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32212582" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
