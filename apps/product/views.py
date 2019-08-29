@@ -29,8 +29,6 @@ class ProductList(CustomViewBase):
     serializer_class = productListSerializer
 
 
-
-
 class ProductAdd(CustomViewBase):
     """新增产品"""
     serializer_class = ProductAddSerializer

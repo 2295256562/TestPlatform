@@ -29,7 +29,7 @@ router.register(r'add_product', ProductAdd, base_name='add_product')
 
 urlpatterns = [
     re_path('admin/', admin.site.urls),
-    re_path('login/', obtain_jwt_token),
+    re_path('api/login', obtain_jwt_token),
     re_path('api-auth/',include('rest_framework.urls')),
-    re_path(r'^', include(router.urls)),
+    re_path(r'api/', include(router.urls)),
 ]
