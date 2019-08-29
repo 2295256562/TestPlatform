@@ -4,6 +4,7 @@ import Login from '@/components/login/login.vue'
 import Index from '@/components/index/index'
 import Home from '@/components/home/home.vue'
 import Product from '@/components/product/product.vue'
+import addProduct from '@/components/product/addProduct.vue'
 
 Vue.use(Router);
 
@@ -27,7 +28,12 @@ export default new Router({
           name: 'product',
           path: '/home/product',
           component: Product
-        }
+        },
+        {
+          name: 'addproduct',
+          path: '/home/addproduct',
+          component: addProduct
+        },
       ]
     }
   ]

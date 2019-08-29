@@ -22,18 +22,18 @@
 
         <el-menu
           background-color="#545c64"
-          default-active="1"
+          default-active="/home/index"
           text-color="#fff"
           active-text-color="red"
           style="text-align: left"
           @select="select"
         >
-          <el-menu-item index="1">
+          <el-menu-item index="/home/index">
             <i class="el-icon-menu"></i>
             <span slot="title">首页</span>
           </el-menu-item>
 
-          <el-menu-item index="2">
+          <el-menu-item index="/home/product">
             <i class="el-icon-menu"></i>
             <span slot="title">项目管理</span>
           </el-menu-item>
@@ -61,17 +61,26 @@
 <script>
   export default {
     name: "home",
+    // data() {
+    //   return {
+    //     index: '/home/index'
+    //   }
+    // },
     methods: {
-      select(v) {
+      select(key, keypath) {
+        console.log(key, keypath)
+        this.$router.push({ path: key })
         // if (v == 2) {
         //   this.$router.push({path: '/home/product'})
         // } else if (v == 1) {
         //   this.$router.push({path: '/home/index'})
         // }
-        this.$router.push({indexpath: v})
-        console.log(v,'v')
+
       }
-    }
+    },
+    // created() {
+    //   this.index = '/home/index'
+    // }
   }
 </script>
 
@@ -89,7 +98,7 @@
   }
 
   .main {
-    background-color: #b3c0d1;
+    background-color: #eee;
   }
 
   .middle {
