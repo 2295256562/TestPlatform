@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     <list default="true" id="72fd1a31-ead4-4e47-a4d6-a4cc4c2dd49e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/TestPlatform.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TestPlatform.iml" afterDir="false" />
@@ -597,6 +598,9 @@
       <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
 >>>>>>> 15d761a6034ec57d022512eb85413e497916d29d
     </list>
+=======
+    <list default="true" id="5b861899-c600-4ad6-9595-27bf0f2fa67c" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -961,7 +965,7 @@
       <updated>1566913582840</updated>
       <workItem from="1566913584138" duration="4179000" />
       <workItem from="1566953589117" duration="2443000" />
-      <workItem from="1566996491475" duration="7497000" />
+      <workItem from="1566996491475" duration="8324000" />
     </task>
     <task id="LOCAL-00001" summary="提交登录">
       <created>1566953751985</created>
@@ -981,7 +985,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14119000" />
+    <option name="totallyTimeSpent" value="14946000" />
   </component>
   <component name="ToolWindowManager">
 <<<<<<< HEAD

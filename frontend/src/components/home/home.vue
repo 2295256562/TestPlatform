@@ -12,7 +12,7 @@
         </el-col>
         <el-col :span="2">
           <div class="grid-content bg-purple">
-            <a class="logout" href="#">退出</a>
+            <a class="logout" @click.prevent="handleSignout()" href="#">退出</a>
           </div>
         </el-col>
       </el-row>
@@ -21,10 +21,10 @@
       <el-aside class="aside" width="200px">
 
         <el-menu
-          background-color="#545c64"
+          background-color="#333"
           default-active="/home/index"
           text-color="#fff"
-          active-text-color="red"
+          active-text-color="yellow"
           style="text-align: left"
           @select="select"
         >
@@ -60,22 +60,32 @@
 
 <script>
   export default {
+    beroreCreate() {
+      // 获取登录页存储的token
+      const token = localStorage.getItem('token')
+
+      // 判断是否有token
+      if (!token) {
+        // 没有token -> 去到登录页
+        this.$router.push({name: 'login'})
+      }
+      // 有token 继续渲染组件
+    },
     name: "home",
-    // data() {
-    //   return {
-    //     index: '/home/index'
-    //   }
-    // },
+
+
     methods: {
       select(key, keypath) {
         console.log(key, keypath)
         this.$router.push({ path: key })
-        // if (v == 2) {
-        //   this.$router.push({path: '/home/product'})
-        // } else if (v == 1) {
-        //   this.$router.push({path: '/home/index'})
-        // }
-
+      },
+      handleSignout(){
+        // 清除token
+        localStorage.clear()
+        // 提示
+        this.$message.success('退出成功')
+        // 跳转login组件
+        this.$router.push({ name: 'login'})
       }
     },
     // created() {
@@ -90,11 +100,11 @@
   }
 
   .header {
-    background-color: #f68e54;
+    background-color: #366794;
   }
 
   .aside {
-    background-color: black;
+    background-color: #333;
   }
 
   .main {
