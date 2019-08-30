@@ -1,13 +1,13 @@
 <template>
     <div class="login-wrap">
 
-      <el-form class="login-form" label-position="left" label-width="80px" :model="fromdata">
+      <el-form class="login-form" label-position="left" label-width="80px" :model="fromdata" :rules="rules">
         <h1>用户登录</h1>
-        <el-form-item label="用户名:">
-          <el-input v-model="fromdata.username"></el-input>
+        <el-form-item label="用户名:" prop="username">
+          <el-input v-model.trim="fromdata.username"></el-input>
         </el-form-item>
-        <el-form-item label="密码:">
-          <el-input v-model="fromdata.password"></el-input>
+        <el-form-item label="密码:" prop="password">
+          <el-input type="password" v-model.trim="fromdata.password"></el-input>
         </el-form-item>
         <el-button @click.prevent="handleLogin()" class="login-btn" type="primary">登录</el-button>
       </el-form>
@@ -22,6 +22,11 @@ export default {
          fromdata: {
            username:'',
            password: ''
+         },
+         // 表单输入规则校验
+         rules: {
+           username:[{required:true, message: '请输入用户名', trigger: 'blur'}],
+           password:[{required:true, message: '请输入密码', trigger: 'blur'}],
          }
        }
     },
@@ -37,15 +42,16 @@ export default {
               // 保存token值 目的：如果用户没登录不让进入页面，登录成功后保存token
              localStorage.setItem('token', data[0].token)
               // 跳转home
-             this.$router.push({name:'home'})
+             this.$router.push({name:'index'})
              // 提示成功
-             this.$message.success(msg)
-           }else {
+             this.$message.success("登陆成功")
+           } else {
              // 不成功
              // 提示信息
-             this.$message.warning(msg)
+             this.$message.error(msg)
            }
          })
+           // .catch(e => this.$message.error('xxxxx'))
        }
     }
 }

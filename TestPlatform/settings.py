@@ -152,4 +152,5 @@ CORS_ORIGIN_ALLOW_ALL = True
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'apps.Users.views.jwt_response_payload_handler',
+    'JWT_RESPONSE_PAYLOAD_ERROR_HANDLER': 'apps.Users.views.jwt_response_payload_error_handler',
 }
