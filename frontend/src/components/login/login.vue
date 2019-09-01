@@ -44,14 +44,14 @@ export default {
               // 跳转home
              this.$router.push({name:'index'})
              // 提示成功
-             this.$message.success("登陆成功")
-           } else {
-             // 不成功
-             // 提示信息
-             this.$message.error(msg)
-           }
+             this.$message.success("登陆成功")}
+           // } else {
+           //   // 不成功
+           //   // 提示信息
+           //   this.$message.error(msg)
+           // }
          })
-           // .catch(e => this.$message.error('xxxxx'))
+           .catch(e => this.$message.error('账号或密码错误'))
        }
     }
 }

@@ -24,7 +24,7 @@ class GoodsPagination(PageNumberPagination):
 
 class ProductList(CustomViewBase):
     """产品列表页"""
-    queryset = product.objects.all().order_by('id')
+    queryset = product.objects.filter(is_del=False).order_by('id')
     pagination_class = PageResultsSetPagination
     serializer_class = productListSerializer
 

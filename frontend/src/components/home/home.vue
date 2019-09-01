@@ -60,7 +60,7 @@
 
 <script>
   export default {
-    beroreCreate() {
+    beforeCreate() {
       // 获取登录页存储的token
       const token = localStorage.getItem('token')
 
@@ -71,7 +71,7 @@
       }
       // 有token 继续渲染组件
     },
-    name: "home",
+
 
 
     methods: {

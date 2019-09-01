@@ -7,10 +7,12 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import '@/assets/css/resett.css'
 import myserverHttp from '@/plugs/http.js'
+import MyHttpinterceptor from '@/plugs/interceptor.js'
 
 
 Vue.use(ElementUI);
 Vue.use(myserverHttp)
+Vue.use(MyHttpinterceptor)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
