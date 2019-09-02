@@ -3,6 +3,8 @@ from rest_framework import mixins
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.mixins import CreateModelMixin
+from rest_framework.permissions import IsAuthenticated
+
 from apps.product.models import product
 from apps.utils.custom_viewset_base import CustomViewBase
 from apps.product.ProductModelSerializer import ProductAddSerializer, productListSerializer
@@ -24,6 +26,7 @@ class GoodsPagination(PageNumberPagination):
 
 class ProductList(CustomViewBase):
     """产品列表页"""
+    # permission_classes = (IsAuthenticated,)
     queryset = product.objects.filter(is_del=False).order_by('id')
     pagination_class = PageResultsSetPagination
     serializer_class = productListSerializer

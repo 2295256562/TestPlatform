@@ -31,28 +31,29 @@ export default {
        }
     },
     methods: {
-       handleLogin() {
-         this.$http.post('login', this.fromdata).then(res => {
-           console.log(res)
-           const {
-             data, msg, status
-           } = res.data
-           if (status === 200) {
-              // 登录成功
-              // 保存token值 目的：如果用户没登录不让进入页面，登录成功后保存token
-             localStorage.setItem('token', data[0].token)
-              // 跳转home
-             this.$router.push({name:'index'})
-             // 提示成功
-             this.$message.success("登陆成功")}
-           // } else {
-           //   // 不成功
-           //   // 提示信息
-           //   this.$message.error(msg)
-           // }
-         })
-           .catch(e => this.$message.error('账号或密码错误'))
-       }
+        handleLogin() {
+            this.$http.post('login', this.fromdata).then(res => {
+                console.log(res, 'res')
+                const {
+                    data, msg, status
+                } = res.data
+                if (status === 200) {
+                    // 登录成功
+                    // 保存token值 目的：如果用户没登录不让进入页面，登录成功后保存token
+                    localStorage.setItem('token', data[0].token)
+                    // 跳转home
+                    this.$router.push({name: 'index'})
+                    // 提示成功
+                    this.$message.success("登陆成功")
+                } else {
+                    // 不成功
+                    // 提示信息
+                    this.$message.error(msg)
+                }
+            })
+            // .catch(e => this.$message.error('账号或密码错误')) //账号或密码错误
+
+        }
     }
 }
 </script>

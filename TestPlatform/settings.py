@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'apps.Users',
     'apps.product',
     'apps.utils',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -84,11 +85,13 @@ AUTH_USER_MODEL = "Users.User"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testplatform',
+        # 'NAME': 'testplatform',
+        'NAME': 'TestPlatform',
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',
-        'PORT': '3307',
+        # 'PORT': '3307',
+        'PORT': '3306',
         'OPTIONS': {"init_command":"SET default_storage_engine=INNODB;"}
     }
 }
@@ -136,13 +139,14 @@ STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'apps.utils.Auth.JSONWebTokenAuthentication'
     ),
-    'DEFAULT_PAGINATION_CLASS': 'apps.utils.custom_pagination.PageResultsSetPagination',
-    'PAGE_SIZE': 10,
-    'EXCEPTION_HANDLER': 'apps.utils.custom_exception.custom_exception_handler',
+    # 'DEFAULT_PAGINATION_CLASS': 'apps.utils.custom_pagination.PageResultsSetPagination',
+    # 'PAGE_SIZE': 10,
+    # 'EXCEPTION_HANDLER': 'apps.utils.custom_exception.custom_exception_handler',
 }
 
 # 跨域处理
@@ -150,7 +154,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 # jwt_token配置
 JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=6000),
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'apps.Users.views.jwt_response_payload_handler',
     'JWT_RESPONSE_PAYLOAD_ERROR_HANDLER': 'apps.Users.views.jwt_response_payload_error_handler',
 }

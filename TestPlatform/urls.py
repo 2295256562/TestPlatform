@@ -28,6 +28,7 @@ router.register(r'products', ProductList, base_name='products')
 router.register(r'add_product', ProductAdd, base_name='add_product')
 
 urlpatterns = [
+    # re_path('docs', include_docs_urls(title='测试平台')),
     re_path('admin/', admin.site.urls),
     re_path('api/login', obtain_jwt_token),
     re_path('api-auth/',include('rest_framework.urls')),

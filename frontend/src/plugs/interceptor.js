@@ -11,5 +11,15 @@ MyHttpinterceptor.install = (Vue) => {
     }
     return config
   })
+  axios.interceptors.response.use(response => {
+    if (response.status === 200) {
+      return Promise.resolve(response)
+    }
+  }, (err) => {
+    if (err.response.status === 403) {
+      localStorage.removeItem('token')
+      location.href = '/#/login/'
+    }
+  })
 }
 export default MyHttpinterceptor
