@@ -51,7 +51,7 @@ export default {
                     this.$message.error(msg)
                 }
             })
-            // .catch(e => this.$message.error('账号或密码错误')) //账号或密码错误
+            .catch(e => this.$message.error('账号或密码错误')) //账号或密码错误
 
         }
     }
