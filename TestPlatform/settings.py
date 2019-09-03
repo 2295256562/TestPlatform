@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'apps.product',
     'apps.utils',
     'rest_framework.authtoken',
+    'haystack',    # elasticsearch
+    'apps.uicase',
+    'apps.apicase',
 ]
 
 MIDDLEWARE = [
@@ -61,8 +64,8 @@ ROOT_URLCONF = 'TestPlatform.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        'DIRS': ['frontend/dist']
+        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        # 'DIRS': ['frontend/dist']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -85,13 +88,13 @@ AUTH_USER_MODEL = "Users.User"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testplatforms',
-        # 'NAME': 'TestPlatform',
+        # 'NAME': 'testplatforms',
+        'NAME': 'TestPlatforma',
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',
-        'PORT': '3307',
-        # 'PORT': '3306',
+        # 'PORT': '3307',
+        'PORT': '3306',
         'OPTIONS': {"init_command":"SET default_storage_engine=INNODB;"}
     }
 }
@@ -160,3 +163,14 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'apps.Users.views.jwt_response_payload_handler',
     'JWT_RESPONSE_PAYLOAD_ERROR_HANDLER': 'apps.Users.views.jwt_response_payload_error_handler',
 }
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',  #指定elasticsearch为搜索引擎
+        'URL': 'http://127.0.0.1:9200/',  # 此处为elasticsearch运行的服务器ip地址，端口默认为9200
+        'INDEX_NAME': 'testplatform',
+    },
+}
+
+HYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

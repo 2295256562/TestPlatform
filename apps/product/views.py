@@ -4,11 +4,18 @@ from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.mixins import CreateModelMixin
 from rest_framework.permissions import IsAuthenticated
-
+from drf_haystack.viewsets import HaystackViewSet
 from apps.product.models import product
 from apps.utils.custom_viewset_base import CustomViewBase
-from apps.product.ProductModelSerializer import ProductAddSerializer, productListSerializer
+from apps.product.ProductModelSerializer import ProductAddSerializer, productListSerializer, productIndexSerializer
 from apps.utils.custom_pagination import PageResultsSetPagination
+
+
+class productSearchView(HaystackViewSet):
+    index_models = [product]
+    serializer_class = productIndexSerializer
+
+
 
 class GoodsPagination(PageNumberPagination):
     """

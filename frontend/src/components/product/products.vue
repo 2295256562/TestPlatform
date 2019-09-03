@@ -14,6 +14,8 @@
         <el-input placeholder="请输入内容" v-model="query" class="inputSeach">
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
+      </el-col>
+      <el-col style="width: 20%;text-align: left;margin-left: 23px;">
         <el-button @click="addProductHandler" type="success">添加</el-button>
       </el-col>
     </el-row>

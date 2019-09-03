@@ -12,7 +12,7 @@ class product(SoftDeletableModel, models.Model):
 
 
     class Meta:
-        db_table = "products"
+        db_table = "tp_product"
         verbose_name = "产品管理"
         verbose_name_plural = verbose_name
 

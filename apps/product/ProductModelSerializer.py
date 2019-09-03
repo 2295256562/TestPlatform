@@ -1,7 +1,9 @@
 from rest_framework.validators import UniqueValidator
-
+from drf_haystack.serializers import HaystackSerializer
 from apps.product.models import product
 from rest_framework import serializers
+
+from apps.product.search_index import productIndex
 
 
 class ProductAddSerializer(serializers.ModelSerializer):
@@ -26,3 +28,12 @@ class productListSerializer(serializers.ModelSerializer):
     class Meta:
         model = product
         fields = "__all__"
+
+
+
+class productIndexSerializer(HaystackSerializer):
+    object = productListSerializer(read_only=True)
+
+    class Meta:
+        index_classes = [productIndex]
+        fields = ('text', 'object')
