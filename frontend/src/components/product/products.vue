@@ -71,14 +71,40 @@
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page="currentPage4"
-      :page-sizes="10"
-      :page-size="100"
+      :current-page="page"
+      :page-sizes="[10,20]"
+      :page-size="10"
       layout="total, sizes, prev, pager, next, jumper"
-      :total="400">
+      :total="count">
     </el-pagination>
-
   </el-card>
+
+  <!-- 添加用户的对话框 -->
+    <el-dialog
+      title="添加用户"
+      :visible.sync="addDialogVisible"
+      width="50%"
+      @close="addDialogClosed">
+      <!-- 添加用户的表单 -->
+      <el-form :model="addForm" :rules="addFormRules" ref="addFormRef" label-width="70px">
+        <el-form-item label="产品名称" prop="username">
+          <el-input v-model="addForm.username"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="addForm.password"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="email">
+          <el-input v-model="addForm.email"></el-input>
+        </el-form-item>
+        <el-form-item label="手机" prop="mobile">
+          <el-input v-model="addForm.mobile"></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="addDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="addUser">确 定</el-button>
+      </span>
+    </el-dialog>
 </template>
 
 <script>
@@ -88,27 +114,37 @@ export default {
 
   async created() {
     // 实例创建完成后执行的钩子函数
-    const res = await this.$http.get('products/')
+    const res = await this.$http.get(`products/?&page=${this.page}&pagesiez=${this.pagesize}`)
     this.tableData = res.data.data.map(item => {
       item.creater_time = time(item.creater_time)
       return item
     })
+
+    // this.count = res.data.count
+    this.getproductList()
   },
+
   data() {
     return {
       tableData: [],
-      query: ""
+      query: "",
+      count: -1,
+      page: 1,
+      pagesize: 10
     }
   },
-  async getproductList(){
-    // query 查询参数可以为空
-    // pagenum  当前页码 不能为空
-    // pagesiez 每页显示条数  不能为空
-    const res = await this.$http.get(
-      `products/?page=${this.page}&pagesiez=${this.pagesize}`)
-  },
+
 
   methods: {
+    async getproductList() {
+      // query 查询参数可以为空
+      // pagenum  当前页码 不能为空
+      // pagesiez 每页显示条数  不能为空
+      const res = await this.$http.get(
+        `products/?&page=${this.page}&pagesiez=${this.pagesize}`)
+      this.count = res.data.count
+      this.tableData = res.data.data
+    },
     addProductHandler() {
       // 点击新建产品跳页
       this.$router.push({path: '/home/addProduct'})
@@ -120,8 +156,20 @@ export default {
       }
     },
     // 分页相关方法
-    handleSizeChange(){},
-    handleCurrentChange(){},
+    handleSizeChange(val) {
+      console.log(`每页${val}条`)
+      this.pagesize = val
+      this.getproductList()
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页${val}条`)
+      this.page = val
+      this.getproductList()
+    },
+
+    handleEdit(){
+      this.dialog
+    }
   },
 }
 </script>

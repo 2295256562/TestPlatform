@@ -88,13 +88,13 @@ AUTH_USER_MODEL = "Users.User"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'testplatforms',
-        'NAME': 'TestPlatforma',
+        'NAME': 'testplatforms',
+        # 'NAME': 'TestPlatforma',
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',
-        # 'PORT': '3307',
-        'PORT': '3306',
+        'PORT': '3307',
+        # 'PORT': '3306',
         'OPTIONS': {"init_command":"SET default_storage_engine=INNODB;"}
     }
 }
@@ -147,11 +147,11 @@ REST_FRAMEWORK = {
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'apps.utils.Auth.JSONWebTokenAuthentication'
     ),
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema'
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
 
-    # 'DEFAULT_PAGINATION_CLASS': 'apps.utils.custom_pagination.PageResultsSetPagination',
-    # 'PAGE_SIZE': 10,
-    # 'EXCEPTION_HANDLER': 'apps.utils.custom_exception.custom_exception_handler',
+    'DEFAULT_PAGINATION_CLASS': 'apps.utils.custom_pagination.PageResultsSetPagination',
+    # 'PAGE_SIZE': 'page_siez',
+    'EXCEPTION_HANDLER': 'apps.utils.custom_exception.custom_exception_handler',
 }
 
 # 跨域处理
